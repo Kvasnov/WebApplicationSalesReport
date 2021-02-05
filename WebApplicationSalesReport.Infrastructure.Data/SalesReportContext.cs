@@ -7,13 +7,16 @@ namespace WebApplicationSalesReport.Infrastructure.Data
 {
     public class SalesReportContext : DbContext
     {
+        public SalesReportContext()
+        {
+        }
         public SalesReportContext( DbContextOptions< SalesReportContext > options ) : base( options )
         {
             Database.EnsureCreated();
         }
 
-        internal DbSet< Client > Clients { get; set; }
-        public DbSet< Purchase > Purchases { get; set; }
+        public virtual DbSet< Client > Clients { get; set; }
+        public virtual DbSet< Purchase > Purchases { get; set; }
 
         protected override void OnModelCreating( ModelBuilder modelBuilder )
         {
